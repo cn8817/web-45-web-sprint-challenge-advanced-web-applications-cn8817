@@ -41,6 +41,7 @@ function App() {
 
 export default App;
 
+
 //Task List:
 //1. Add in two routes that link to the Login Component, one for the default path '/' and one for the '/login'.
 //2. Render BubblePage as a PrivateRoute
