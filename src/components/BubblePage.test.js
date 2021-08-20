@@ -90,8 +90,8 @@ const colorObjects = [
     ]
 
 test("Renders appropriate number of colors passed in through mock", async ()=> {
-    Keep in mind that our service is called on mount for this component.
-    arrange: render the bubblepage with the colors =[]
+    //Keep in mind that our service is called on mount for this component.
+    //arrange: render the bubblepage with the colors =[]
     const { rerender } = render(<BubblePage colors={[]}/>)
 
     //act: find the colors
