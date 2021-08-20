@@ -47,9 +47,6 @@ const Login = (props) => {
               push('/bubble-page')
       }
 
-  // const error = "";
-  //replace with error state
-
   return (
     <div>
       <h1>Welcome to the Bubble App!</h1>
