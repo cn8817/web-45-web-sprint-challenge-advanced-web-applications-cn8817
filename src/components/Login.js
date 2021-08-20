@@ -35,7 +35,7 @@ const Login = () => {
         }
 
         else if(user.credentials.username === 'Lambda' || user.credentials.pasword === 'School'){
-          axios.post('http://localhost:5000/api/login', user.credentials)
+          axios.post('http://localhost:5000/api/login', user.credentials) //api call when form is submitted with the correct username and password
             .then(res => {
               localStorage.setItem("token", res.data.payload)
               push('/bubbles')
@@ -46,11 +46,12 @@ const Login = () => {
               }
       }
 
+      //form
   return (
     <div>
       <h1>Welcome to the Bubble App!</h1>
       <div data-testid="loginForm" className="login-form">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}> 
           <input
             type='text'
             name='username'

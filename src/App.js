@@ -10,7 +10,7 @@ import axiosWithAuth from "./helpers/axiosWithAuth";
 
 function App() {
 
-  const handleClick = (e) => {
+  const handleClick = (e) => { //api call to remove token when log out is clicked
     e.preventDefault()
     axiosWithAuth()
       .post('http://localhost:5000/api/logout')
@@ -31,7 +31,7 @@ function App() {
           <a><Link to='/login'>Login</Link></a>
 
           <a>
-            {localStorage.getItem('token') && <div><Link to='protected'>Bubble Page</Link></div>}
+            {localStorage.getItem('token') && <div><Link to='protected'>Bubble Page</Link></div>} {/*nav only appears when logged in */}
           </a>
 
         </header>
