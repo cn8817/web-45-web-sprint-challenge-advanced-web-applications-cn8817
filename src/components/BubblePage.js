@@ -7,10 +7,10 @@ import fetchColorService from '../services/fetchColorService';
 import { useParams, useHistory } from "react-router-dom";
 import axiosWithAuth from "../helpers/axiosWithAuth";
 
-const BubblePage = (props) => {
+const BubblePage = () => {
   const [colors, setColors] = useState([]);
   const [editing, setEditing] = useState(false);
-  const { id } = props.match.params
+  const { id } = useParams()
   const { push } = useHistory()
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const BubblePage = (props) => {
   const deleteColor = (colorToDelete) => {
     axiosWithAuth().delete(`/colors/${id}`)
       .then(res => {
-        setColors(res.data)
+        colorToDelete(res.data)
         push('/bubbles')
       })
       .catch(err => {
