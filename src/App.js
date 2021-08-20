@@ -9,8 +9,7 @@ import axios from "axios";
 
 function App(props) {
 
-  const handleClickButton = e => {
-    e.preventDefault()
+  const handleClickButton = () => {
     axios.post('http://localhost:5000/api/logout')
       .then(res=> {
         localStorage.removeItem('token')
@@ -26,14 +25,20 @@ function App(props) {
       <div className="App">
         <header>
           Color Picker Sprint Challenge
+          {/*Nav bar*/}
           <a data-testid="logoutButton" href="#" onClick={handleClickButton}>logout</a>
+
           <a><Link to='/login'>Login</Link></a>
-          <a>{localStorage.getItem('token') && <div><Link to='protected'>Bubble Page</Link></div>}</a>
+
+          <a>
+            {localStorage.getItem('token') && <div><Link to='protected'>Bubble Page</Link></div>}
+          </a>
+
         </header>
       </div>
 
       <Switch>
-        <PrivateRoute path='/bubble-page' component={BubblePage}/>
+        <PrivateRoute path='/bubbles' component={BubblePage}/>
         <Route path='/login' component={Login}/>
         <Route path='/' component={Login}/>
       </Switch>
