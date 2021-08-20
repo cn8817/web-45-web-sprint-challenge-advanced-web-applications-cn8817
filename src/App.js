@@ -6,17 +6,17 @@ import BubblePage from './components/BubblePage'
 import PrivateRoute from './components/PrivateRoute'
 import "./styles.scss";
 import axios from "axios";
+import axiosWithAuth from "./helpers/axiosWithAuth";
 
-function App(props) {
+function App() {
 
-  const handleClickButton = () => {
-    axios.post('http://localhost:5000/api/logout')
+  const handleClick = (e) => {
+    e.preventDefault()
+    axiosWithAuth()
+      .post('http://localhost:5000/api/logout')
       .then(res=> {
-        localStorage.removeItem('token')
-        props.history.push('/login')
-      })
-      .catch(err => {
-        console.log(err)
+        localStorage.removeItem("token")
+        window.location.href = 'http://localhost:3000/api/login'
       })
   }
 
@@ -26,7 +26,7 @@ function App(props) {
         <header>
           Color Picker Sprint Challenge
           {/*Nav bar*/}
-          <a data-testid="logoutButton" href="#" onClick={handleClickButton}>logout</a>
+          <a data-testid="logoutButton" href="#" onClick={handleClick}>logout</a>
 
           <a><Link to='/login'>Login</Link></a>
 
@@ -47,6 +47,8 @@ function App(props) {
 }
 
 export default App;
+
+
 
 
 //Task List:
