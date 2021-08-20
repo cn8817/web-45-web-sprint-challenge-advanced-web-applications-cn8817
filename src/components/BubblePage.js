@@ -45,7 +45,7 @@ const BubblePage = (props) => {
     axiosWithAuth().delete(`/colors/${id}`)
       .then(res => {
         setColors(res.data)
-        push('bubble-page')
+        push('/bubbles')
       })
       .catch(err => {
         console.log(err)
