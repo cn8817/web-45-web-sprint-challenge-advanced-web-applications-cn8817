@@ -10,7 +10,7 @@ import axiosWithAuth from "../helpers/axiosWithAuth";
 const BubblePage = (props) => {
   const [colors, setColors] = useState([]);
   const [editing, setEditing] = useState(false);
-  const { id } = useParams()
+  const { id } = props.match.params
   const { push } = useHistory()
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const BubblePage = (props) => {
   const deleteColor = (colorToDelete) => {
     axiosWithAuth().delete(`/colors/${id}`)
       .then(res => {
-        colorToDelete(res.data)
+        setColors(res.data)
         push('bubble-page')
       })
       .catch(err => {
