@@ -33,16 +33,22 @@ const BubblePage = (props) => {
   const saveEdit = (editColor) => {
     axiosWithAuth().put(`/colors/${id}`, colors)
       .then(res=> {
-        props.editColor(res.data)
+        editColor(res.data)
         push(`/colors/${id}`)
+      })
+      .catch(err => {
+        console.log(err)
       })
   };
 
   const deleteColor = (colorToDelete) => {
-    axiosWithAuth().delete(`/colors/${id}`, colors)
+    axiosWithAuth().delete(`/colors/${id}`)
       .then(res => {
-        props.colorToDelete(res.data)
+        colorToDelete(res.data)
         push('bubble-page')
+      })
+      .catch(err => {
+        console.log(err)
       })
   };
 
